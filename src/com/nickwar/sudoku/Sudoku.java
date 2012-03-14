@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.app.Activity;
 import android.os.Bundle;
-import android.provider.Contacts.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuInflater;
@@ -15,17 +14,17 @@ import android.util.Log;
 
 public class Sudoku extends Activity implements OnClickListener {
 
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        Music.stop(this);
-//    }
-//
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        Music.play(this, R.raw.main);
-//    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Music.stop(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Music.play(this, R.raw.main);
+    }
 
     private static final String TAG = "Sudoku";
     @Override
