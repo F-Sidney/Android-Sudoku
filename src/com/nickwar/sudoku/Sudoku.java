@@ -9,11 +9,15 @@ import android.provider.Contacts.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuInflater;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.util.Log;
 
 public class Sudoku extends Activity implements OnClickListener {
+
+    private static final String TAG = "Sudoku";
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // TODO Auto-generated method stub
        switch (item.getItemId()) {
        case R.id.settings:
                startActivity(new Intent(this,com.nickwar.sudoku.Settings.class));
@@ -25,7 +29,6 @@ public class Sudoku extends Activity implements OnClickListener {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // TODO Auto-generated method stub
         super.onCreateOptionsMenu(menu);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
@@ -34,16 +37,37 @@ public class Sudoku extends Activity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
         switch (v.getId()) {
         case R.id.about_button:
             Intent i = new Intent(this,About.class);
             startActivity(i);
             break;
-
+        case R.id.new_button:
+            openNewGameDialog();
+            break;
+        case R.id.exit_button:
+            finish();
+            break;
         default:
             break;
         }
+    }
+
+    private void openNewGameDialog() {
+       new AlertDialog.Builder(this).setTitle(R.string.new_game_title)
+       .setItems(R.array.difficulty, 
+               new DialogInterface.OnClickListener() {
+                
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                   startGame(which);
+                }
+            }).show();
+    }
+
+    private void startGame(int i) {
+        Log.d(TAG, "clicked on " + i);
+        //TODO start game here...
     }
 
     /** Called when the activity is first created. */
