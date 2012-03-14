@@ -9,6 +9,8 @@ import android.graphics.Paint.Style;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 public class PuzzleView extends View {
     @Override
@@ -59,6 +61,8 @@ public class PuzzleView extends View {
     void setSelectedTile(int i) {
         if (game.setTileIfValid(selX,selY,i)) {
             invalidate(selRect);
+        }else{
+            startAnimation(AnimationUtils.loadAnimation(game, R.anim.shake));
         }
     }
     private void select(int x, int y) {

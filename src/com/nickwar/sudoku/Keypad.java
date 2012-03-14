@@ -55,7 +55,7 @@ public class Keypad extends Dialog {
         findViews();
         for (int elements : useds) {
             if (elements != 0) {
-                keys[elements - 1].setVisibility(View.INVISIBLE);
+//                keys[elements - 1].setVisibility(View.INVISIBLE);
             }
         }
         

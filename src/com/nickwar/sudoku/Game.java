@@ -10,6 +10,17 @@ import android.widget.Toast;
 
 public class Game extends Activity {
     
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Music.stop(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Music.play(this, R.raw.game);
+    }
     private final int[][][] used = new int[9][9][];
 
     @Override
@@ -108,7 +119,15 @@ public class Game extends Activity {
         }
         return puz;
     }
-
+    
+    static protected String toPuzzleString(int[] puz){
+        StringBuilder buf = new StringBuilder();
+        for (int element : puz) {
+            buf.append(element);
+        }
+        
+        return buf.toString();
+    }
     private static final String TAG = "Sudoku";
     
     public static final String KEY_DIFFICULTY = "difficulty";

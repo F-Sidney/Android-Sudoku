@@ -15,6 +15,18 @@ import android.util.Log;
 
 public class Sudoku extends Activity implements OnClickListener {
 
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        Music.stop(this);
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Music.play(this, R.raw.main);
+//    }
+
     private static final String TAG = "Sudoku";
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
